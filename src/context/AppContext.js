@@ -58,9 +58,18 @@ export const AppReducer = (state, action) => {
                 budget
             };
         case 'SET_BUDGET':
+           const curr_expenses = state.expenses.map((currentExp)=> {                
+                return currentExp.cost
+            })   
+         if(action.payload>20000)
+              alert("The value cannot exceed remaining fund");
+         if(action.payload<curr_expenses){
+                 alert("You cannot reduce the budget more than spending");  
+              }
+              else{
             action.type = "DONE";
             state.budget = action.payload;
-
+              }
             return {
                 ...state,
             };

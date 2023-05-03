@@ -1,9 +1,13 @@
 import React, { useContext ,useState } from 'react';
 import { AppContext } from '../context/AppContext';
 const Budget = () => {
-    const { budget, Currency } = useContext(AppContext);
-    const {budget,setBudget} = useState('');
-    
+    const { dispatch,budget, Currency } = useContext(AppContext);
+    const setBudget = (val) => {
+        dispatch({
+            type: 'SET_BUDGET',
+            payload: val,
+        });
+    };
     return (
         <div className='alert alert-secondary'>
             <span>Budget: {Currency}<input
